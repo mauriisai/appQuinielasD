@@ -16,10 +16,88 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
 
         @Override
         public void onCreate(SQLiteDatabase db ) {
-            String query = "CREATE TABLE Usuarios(_idUsuario integer primary key autoincrement, nomUsuario text, " +
-                    "correo text, identificacion text, telefono text, password Text);";
+            String queryUsuarios = "CREATE TABLE Usuario(" +
+                    "_idUsuario integer primary key autoincrement," +
+                    "nomUsuario text UNIQUE, " +
+                    "correo text UNIQUE, " +
+                    "identificacion text UNIQUE," +
+                    " telefono text," +
+                    " password Text);";
 
-            db.execSQL(query);
+            String queryTorneos ="CREATE TABLE Torneo(" +
+                    "idTorneo INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "nomTorneo TEXT," +
+                    "region TEXT," +
+                    "numParticipantes INTEGER," +
+                    "fechaInicio DATE," +
+                    "fechaFin DATE" +
+                    ")";
+
+            String queryEquipos ="CREATE TABLE Equipo(" +
+                    "idEquipo INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "nomEquipo TEXT," +
+                    "pais TEXT," +
+                    "campeonatos INTEGER" +
+                    ")";
+
+            String queryEquipoTorneos ="CREATE TABLE EquipoTorneo(" +
+                    "idEquipoTorneo INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "idTorneo INTEGER NOT NULL," +
+                    "idEquipo INTEGER," +
+                    "es_activo BOOLEAN," +
+                    "FOREIGN KEY(idTorneo) REFERENCES Torneo(idTorneo),"+
+                    "FOREIGN KEY(idEquipo) REFERENCES Equipo(idEquipo)"+
+                    ")";
+
+            String queryEncuentros = "CREATE TABLE Encuentro(" +
+                    "idEncuentro INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "visitante INTEGER NOT NULL," +
+                    "local INTEGER NOT NULL," +
+                    "scoreLocal INTEGER," +
+                    "scoreVisitante INTEGER," +
+                    "fecha DATE," +
+                    "hora TIME," +
+                    "FOREIGN KEY(visitante) REFERENCES Equipo(idEquipo),"+
+                    "FOREIGN KEY(local) REFERENCES Equipo(idEquipo)"+
+                    ")";
+
+            String queryOfertas = "CREATE TABLE Oferta(" +
+                    "idOferta INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "idEncuentro INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "puntoLocal DECIMAL(10, 5),"+
+                    "puntoVisitante DECIMAL(10, 5),"+
+                    "puntoEmpate DECIMAL(10, 5),"+
+                    "FOREIGN KEY(idEncuentro) REFERENCES Encuentro(idEncuentro)"+
+                    ")";
+
+            String queryResultados = "CREATE TABLE Resultado(" +
+                    "idResultado INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "idEncuentro INTEGER," +
+                    "equipoGanador INTEGER," +
+                    "FOREIGN KEY(idEncuentro) REFERENCES Encuentro(idEncuentro),"+
+                    "FOREIGN KEY(equipoGanador) REFERENCES Equipo(idEquipo)"+
+                    ")";
+
+            String queryApuestas = "CREATE TABLE Apuesta(" +
+                    "idApuesta INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "idEncuentro INTEGER," +
+                    "idUsuario INTEGER," +
+                    "montoApuesta DECIMAL(10,2)," +
+                    "resultadoApuesta INTEGER," +
+                    "montooRetribucion DECIMAL(10,2)," +
+                    "AQueAposto INTEGER," +
+                    "FOREIGN KEY(idEncuentro) REFERENCES Encuentro(idEncuentro),"+
+                    "FOREIGN KEY(idUsuario) REFERENCES Usuario(idusuario)"+
+                    ")";
+
+            db.execSQL(queryUsuarios);
+            db.execSQL(queryTorneos);
+            db.execSQL(queryEquipos);
+            db.execSQL(queryEquipoTorneos);
+            db.execSQL(queryEncuentros);
+            db.execSQL(queryOfertas);
+            db.execSQL(queryResultados);
+            db.execSQL(queryApuestas);
         }
 
         @Override
