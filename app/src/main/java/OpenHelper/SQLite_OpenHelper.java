@@ -16,7 +16,7 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
 
         @Override
         public void onCreate(SQLiteDatabase db ) {
-            String queryUsuarios = "CREATE TABLE Usuario(" +
+            String queryUsuarios = "CREATE TABLE if not exists Usuario(" +
                     "_idUsuario integer primary key autoincrement," +
                     "nomUsuario text UNIQUE, " +
                     "correo text UNIQUE, " +
@@ -24,32 +24,32 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
                     " telefono text," +
                     " password Text);";
 
-            String queryTorneos ="CREATE TABLE Torneo(" +
+            String queryTorneos ="CREATE TABLE if not exists Torneo(" +
                     "idTorneo INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "nomTorneo TEXT," +
                     "region TEXT," +
                     "numParticipantes INTEGER," +
                     "fechaInicio DATE," +
                     "fechaFin DATE" +
-                    ")";
+                    ");";
 
-            String queryEquipos ="CREATE TABLE Equipo(" +
+            String queryEquipos ="CREATE TABLE if not exists Equipo(" +
                     "idEquipo INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "nomEquipo TEXT," +
                     "pais TEXT," +
                     "campeonatos INTEGER" +
-                    ")";
+                    ");";
 
-            String queryEquipoTorneos ="CREATE TABLE EquipoTorneo(" +
+            String queryEquipoTorneos ="CREATE TABLE if not exists EquipoTorneo(" +
                     "idEquipoTorneo INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "idTorneo INTEGER NOT NULL," +
                     "idEquipo INTEGER," +
                     "es_activo BOOLEAN," +
                     "FOREIGN KEY(idTorneo) REFERENCES Torneo(idTorneo),"+
                     "FOREIGN KEY(idEquipo) REFERENCES Equipo(idEquipo)"+
-                    ")";
+                    ");";
 
-            String queryEncuentros = "CREATE TABLE Encuentro(" +
+            String queryEncuentros = "CREATE TABLE if not exists Encuentro(" +
                     "idEncuentro INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "visitante INTEGER NOT NULL," +
                     "local INTEGER NOT NULL," +
@@ -59,26 +59,26 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
                     "hora TIME," +
                     "FOREIGN KEY(visitante) REFERENCES Equipo(idEquipo),"+
                     "FOREIGN KEY(local) REFERENCES Equipo(idEquipo)"+
-                    ")";
+                    ");";
 
-            String queryOfertas = "CREATE TABLE Oferta(" +
+            String queryOfertas = "CREATE TABLE if not exists Oferta(" +
                     "idOferta INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "idEncuentro INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "idEncuentro INTEGER," +
                     "puntoLocal DECIMAL(10, 5),"+
                     "puntoVisitante DECIMAL(10, 5),"+
                     "puntoEmpate DECIMAL(10, 5),"+
                     "FOREIGN KEY(idEncuentro) REFERENCES Encuentro(idEncuentro)"+
-                    ")";
+                    ");";
 
-            String queryResultados = "CREATE TABLE Resultado(" +
+            String queryResultados = "CREATE TABLE if not exists Resultado(" +
                     "idResultado INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "idEncuentro INTEGER," +
                     "equipoGanador INTEGER," +
                     "FOREIGN KEY(idEncuentro) REFERENCES Encuentro(idEncuentro),"+
                     "FOREIGN KEY(equipoGanador) REFERENCES Equipo(idEquipo)"+
-                    ")";
+                    ");";
 
-            String queryApuestas = "CREATE TABLE Apuesta(" +
+            String queryApuestas = "CREATE TABLE if not exists Apuesta(" +
                     "idApuesta INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "idEncuentro INTEGER," +
                     "idUsuario INTEGER," +
@@ -88,7 +88,7 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
                     "AQueAposto INTEGER," +
                     "FOREIGN KEY(idEncuentro) REFERENCES Encuentro(idEncuentro),"+
                     "FOREIGN KEY(idUsuario) REFERENCES Usuario(idusuario)"+
-                    ")";
+                    ");";
 
             db.execSQL(queryUsuarios);
             db.execSQL(queryTorneos);
@@ -123,13 +123,13 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper {
             valores.put("identificacion", identificacion);
             valores.put("telefono", tel);
             valores.put("password", password);
-            this.getWritableDatabase().insert("Usuarios",null,valores);
+            this.getWritableDatabase().insert("Usuario",null,valores);
         }
         //METODO PARA VALIDAR EXISTENCIA DE USUARIO EN BD
         public Cursor ConsultarUsuario (String nomUsuario, String password) throws SQLException {
-            Cursor mCursor = null;
+            Cursor mCursor;
 
-            mCursor=this.getReadableDatabase().query("Usuarios", new String[]{"_idUsuario", "nomUsuario",
+            mCursor=this.getReadableDatabase().query("Usuario", new String[]{"_idUsuario", "nomUsuario",
                     "correo", "identificacion", "telefono", "password"},"nomUsuario like '"+nomUsuario+"' and password like '"+
                     password+"'", null,null,null,null);
             return mCursor;
