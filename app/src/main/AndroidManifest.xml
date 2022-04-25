@@ -9,22 +9,57 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppQuinielas">
+        <activity
+            android:name=".infoEquipo"
+            android:exported="false"
+            android:parentActivityName=".vistaEquipos"/>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+
+        <activity
+            android:name=".regEquipo"
+            android:exported="false"
+            android:parentActivityName=".vistaEquipos" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
 
         <activity
             android:name=".principal"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" />
 
-        </activity>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                       android:value=".MainActivity"/>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
         <activity
             android:name=".registro"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" />
 
-        </activity>
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                       android:value=".MainActivity"/>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+        <activity
+            android:name=".editarEquipo"
+            android:parentActivityName=".infoEquipo" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+        <activity
+            android:name=".vistaEquipos"
+            android:exported="false"
+            android:parentActivityName=".principal" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
 
         <activity
             android:name=".MainActivity"
@@ -35,6 +70,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
+
 </manifest>

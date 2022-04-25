@@ -6,9 +6,16 @@
         <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielas/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielas/app/src/main/res/layout/activity_principal.xml" value="0.1" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielas/app/src/main/res/layout/activity_registro.xml" value="0.18055555555555555" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/drawable/ic_add.xml" value="0.1575" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/drawable/ic_delete.xml" value="0.1" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/activity_equipos.xml" value="0.25" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/activity_info_equipo.xml" value="0.2" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/activity_principal.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/activity_reg_equipo.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/activity_registro.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/activity_vista_equipos.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/appQuinielasD/app/src/main/res/layout/lista_item_equipo.xml" value="0.23802083333333332" />
       </map>
     </option>
   </component>
@@ -17,5 +24,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>

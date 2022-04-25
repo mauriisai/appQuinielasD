@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvRegistro;
     Button btnIngresar;
 
-    SQLite_OpenHelper helper = new SQLite_OpenHelper(this, "BDQuinielas", null, 1);
+    SQLite_OpenHelper helper = new SQLite_OpenHelper(this,"BDQuinielas",null,1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,5 +64,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }

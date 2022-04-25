@@ -27,17 +27,17 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnEquipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Consultar Usuarios" />
+            android:text="Equipos" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Consultar Torneos" />
+            android:text="Torneos" />
 
         <Button
             android:id="@+id/button3"

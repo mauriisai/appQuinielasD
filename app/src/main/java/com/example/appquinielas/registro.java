@@ -18,7 +18,7 @@ public class registro extends AppCompatActivity {
     EditText txtNomUsuario, txtCorreo, txtIdentificacion, txtTelefeno, txtUsuPassword;
 
     //INSTANCIA DE LA BD
-    SQLite_OpenHelper helper= new SQLite_OpenHelper(this, "BDQuinielas", null,1);
+    SQLite_OpenHelper helper= new SQLite_OpenHelper(this,"BDQuinielas",null,1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
