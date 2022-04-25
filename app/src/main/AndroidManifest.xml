@@ -10,11 +10,57 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppQuinielas">
         <activity
+            android:name=".infoEquipo"
+            android:exported="false"
+            android:parentActivityName=".vistaEquipos"/>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+
+        <activity
+            android:name=".regEquipo"
+            android:exported="false"
+            android:parentActivityName=".vistaEquipos" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+        <activity
             android:name=".principal"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
         <activity
             android:name=".registro"
-            android:exported="false" />
+            android:parentActivityName=".MainActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+        <activity
+            android:name=".editarEquipo"
+            android:parentActivityName=".infoEquipo" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
+        <activity
+            android:name=".vistaEquipos"
+            android:exported="false"
+            android:parentActivityName=".principal" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

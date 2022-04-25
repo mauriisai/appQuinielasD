@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">appQuinielas</string>
+    <string name="hint_nombreEquipo">Nombre del Equipo:</string>
+    <string name="hint_pais">Pais:</string>
+    <string name="hint_CorreoEquipo">Correo Electronico:</string>
+    <string name="btn_guarda">Guardar Registro</string>
+
 </resources>
